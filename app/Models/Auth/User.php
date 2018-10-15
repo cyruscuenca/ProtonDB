@@ -76,4 +76,8 @@ class User extends Authenticatable
         'active' => 'boolean',
         'confirmed' => 'boolean',
     ];
+    public function entry()
+    {
+        return $this->hasMany(Entry::class);
+    }
 }

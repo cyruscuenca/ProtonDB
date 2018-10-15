@@ -10,6 +10,6 @@ class App extends Model
 
     public function entry()
     {
-        return $this->belongsToMany(Entry::class);
+        return $this->hasMany(Entry::class);
     }
 }

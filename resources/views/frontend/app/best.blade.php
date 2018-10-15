@@ -1,39 +1,17 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('navs.general.home'))
-
+@section('title', "Best Apps" . ' | ' . app_name())
 <style>
-.grid-container {
-  display: grid;
-  height: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-gap: 0px;
-  grid-template-areas: ". . .";
-  color: #2a475e;
-  border-radius:
-}
-.grid-container div h1{
-  margin-top: 32px;
+.nav-dashboard .nav-item:nth-child(3) {
+    border-right: 3px solid #66c0f4;
 }
 </style>
-
 @section('content')
-
 @include('../../includes/partials/link-check')
-<div class="grid-container" style="margin-top: 100px; border: 1px solid #2a475e; height: 150px; text-align: center; font-size: 22px;">
-	<div>
-		<h1 style="color: #66c0f4;">{{$app_count}}</h1>
-		<p>Apps in Database</p>
-	</div>
-	<div>
-		<h1 style="color: #66c0f4;">{{$entries_count}}</h1>
-		<p>App Reports in Database</p>
-	</div>
-	<div>
-		<h1 style="color: #66c0f4;">{{$flawless_count}}</h1>
-		<p>Flawless App Reports</p>
-	</div>
+<div style="padding-top: 100px;">
+<div class="page-info">
+<h5 style="color: #2a475e;">Sorted by best</h5>
+<img src="{{asset('img/backend/icons/info.svg')}}">
 </div>
     @foreach($sortedApps as $app)
         <a href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/{{$app->path_slug}}">
@@ -51,4 +29,5 @@
             </div>
         </a>
     @endforeach
+</div>
 @endsection

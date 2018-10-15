@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\{Entry, App};
+use App\{Entry, App, Distro};
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,12 +59,91 @@ class AppsController extends Controller
     }
     public function list()
     {
-        $app = App::latest()->paginate(14);   
-       	return view('frontend.app.list')->with('app', $app);
+        $apps = App::latest()->paginate(14);   
+       	return view('frontend.app.list')->with('apps', $apps);
     }
-    public function show($path_int, $path_slug)
+    public function stats()
+    {
+        $apps = App::latest()->paginate(14);
+       	return view('frontend.app.list')->with('apps', $apps);
+    }
+    public function best()
+    {
+        $apps = App::with(['entry' => function($query) {
+            $query->whereIn('compatibility_id', [1,2]);
+        }])->get();
+    
+        $sorted= $apps->sortByDesc(function ($app, $key) {
+            return count($app["entry"]);
+        });
+    
+        $sortedApps = $sorted->values()->all();
+        return view('frontend.app.best', compact('sortedApps'));
+    }
+    public function search()
+    {
+        $app = App::latest()->paginate(14);   
+       	return view('frontend.app.search')->with('app', $app);
+    }
+    public function show($path_int)
     {
         $app = App::where('path_int', $path_int)->first();
-        return view('frontend.app.show')->with('app', $app);
+
+        // Check if app is native
+        if($app->linux_min_spec != null) {
+            $app->nativeOrNot = "Yes";
+        } else {
+            $app->nativeOrNot = "No";
+        }
+
+        $entries = Entry::where('app_id', $app->id);
+
+        // Get most common Linux distro
+        $commonDistro = Entry::where('app_id', $app->id)->select('distro_id')
+                        ->groupBy('distro_id')
+                        ->orderByRaw('COUNT(*) DESC')
+                        ->limit(1)
+                        ->get();
+        
+        // Get best specs
+        $bestGPU = Entry::where('app_id', $app->id)->select('gpu_id')
+                        ->groupBy('gpu_id')
+                        ->orderByRaw('COUNT(*) DESC')
+                        ->limit(1)
+                        ->get();
+        $bestCPU = Entry::where('app_id', $app->id)->select('cpu_id')
+                        ->groupBy('cpu_id')
+                        ->orderByRaw('COUNT(*) DESC')
+                        ->limit(1)
+                        ->get();
+        $bestDriver = Entry::where('app_id', $app->id)->select('driver_version')
+                        ->groupBy('driver_version')
+                        ->orderByRaw('COUNT(*) DESC')
+                        ->limit(1)
+                        ->get();
+        $bestDistro = Entry::where('app_id', $app->id)->select('distro_id')
+                        ->groupBy('distro_id')
+                        ->orderByRaw('COUNT(*) DESC')
+                        ->limit(1)
+                        ->get();
+        $bestDistro = Distro::where('id', $bestDistro->first()->distro_id)->pluck('name');
+
+        $colors = [
+            'Flawless' => '#28b463',
+            'Playable' => '#80a043',
+            'Barely playable' => '#d4ac0d',
+            'Not Playable' => '#ba4a00',
+            'Does not start' => '#c0392b',
+        ];
+
+        return view('frontend.app.show')
+                ->with('app', $app)
+                ->with('entries', $entries->latest()->paginate(4))
+                ->with('colors', $colors)
+                ->with('commonDistro', $commonDistro)
+                ->with('bestGPU', $bestGPU)
+                ->with('bestCPU', $bestCPU)
+                ->with('bestDriver', $bestDriver)
+                ->with('bestDistro', $bestDistro);
     }
 }

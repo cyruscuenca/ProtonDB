@@ -1,8 +1,13 @@
 <div class="footer-container">
     <ul>
-        <li><p>&copy; Cyrus Cuenca</p>
+        <li>
+            <a href="http://cyruscuenca.com" style="color: #31637f;">
+                Made with &nbsp; 💖 &nbsp; on Mars
+            </a>
         </li>
-        <li><a>Terms and Conditions</q></li>
+        <li>
+            <a href="http://cyruscuenca.com" style="color: #31637f;">Terms and Conditions</a>
+        </li>
         <li>
         <p>Not affiliated with Valve</p>
         </li>
