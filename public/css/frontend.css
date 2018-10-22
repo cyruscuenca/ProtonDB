@@ -51,7 +51,7 @@ html {
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-   background: #c7d5e0;
+   background: #1b2838;
 }
 
 @-ms-viewport {
@@ -588,13 +588,6 @@ pre code {
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;
-}
-
-.container {
-  width: calc(100% - 300px - 25px);
-  margin-left: 300px;
-  padding-top: 25px;
-  background: rgba(0,0,0,0);
 }
 
 @media (min-width: 576px) {
@@ -3573,22 +3566,9 @@ tbody.collapse.show {
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
+  z-index: 2;
   display: none;
-  float: left;
-  min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  width: 300px;
 }
 
 .dropup .dropdown-menu {
@@ -4376,25 +4356,27 @@ tbody.collapse.show {
   color: #c7d5e0;
   margin-top: 22px;
   margin-right: 20px;
-  width: 300px;
   border: none;
 }
 
 .dropdown-menu li {
-  margin: 20px 22px;
+  width: 100%;
 }
 
 .dropdown-menu li a{
   color: #c7d5e0;
+  display: inline-block;
 }
 
 .dropdown-menu li img{
   margin-right: 20px;
+  float: left;
 }
 
 .page-info {
   width: 100%;
   padding-bottom: 22px;
+  margin-top: 25px;
 }
 
 .page-info h5{
@@ -4408,12 +4390,36 @@ tbody.collapse.show {
 }
 
 .navbar {
-  position: fixed;
-  height: 100%;
-  width: 280px;
+  position: absolute;
+  height: 100px;
+  width: 100%;
   background: #1b2838;
-  border-right: 1px solid #c7d5e0;
+  top: 0;
   z-index: 4;
+}
+
+.nav-dashboard ul li a {
+  margin-top: 3px;
+  color: #c7d5e0;
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+.nav-dashboard ul li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  margin-right: 8px;
+}
+
+.nav-dashboard ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-dashboard {
+  padding: 0;
 }
 
 .navbar > .container,
@@ -4431,35 +4437,37 @@ tbody.collapse.show {
           justify-content: space-between;
 }
 
-.navbar-brand img{
-  margin-left: .75%;
-  margin-top: 14px;
-  display: inline-block;
-}
-
-.navbar-brand h1{
-  display: inline-block;
-  font-family: 'Oswald', sans-serif;
-  margin-left: 8px;
-  font-weight: bold;
-  color: #c7d5e0;
-  font-size: 40px;
-  margin-top: 24px;
+.responsive-width {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: block;
+  position: relative;
 }
 
 .navbar-nav {
-  display: box;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
   width: 100%;
+  background: #2a475e;
+  height: 50px;
+  top: 100px;
+  position: absolute;
+  padding: 0;
+  list-style-type: none;
+}
+
+.fullwidth{
+  width: calc(100vw - 6px);
+  position: relative;
+  margin-left: -50vw;
+  overflow: hidden; 
+  height: 350px;
+  border-bottom: none;
+  margin-top: -25px;
+  left: 50%;
 }
 
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
-  padding-top: 22px;
-  padding-bottom: 18px;
 }
 
 .navbar-nav .dropdown-menu {
@@ -4698,9 +4706,7 @@ tbody.collapse.show {
   }
 
   .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 1.7rem;
-    color: #c7d5e0;
+
   }
 
   .navbar-expand-lg > .container,
@@ -4824,8 +4830,6 @@ tbody.collapse.show {
 }
 
 .navbar-expand .navbar-nav .nav-link {
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
 }
 
 .navbar-expand > .container,
@@ -4956,15 +4960,22 @@ tbody.collapse.show {
 .footer-container {
   width: 100%;
   margin-top: 25px;
+  border-top: 1px solid #2a475e;
+  margin-bottom: -25px;
+  margin-top: 25px;
+  height: 200px;
 }
 .footer-container ul {
+  text-align: right;
   list-style-type: none;
-  text-align: center;
+  padding: 0;
+  padding-top: 25px;
 }
 .footer-container ul li{
-  display: inline-block;
   color: #31637f;
-  margin: 0 12.5px;
+  list-style-type: none;
+  padding: 0;
+
 }
 
 .card {
@@ -4978,7 +4989,6 @@ tbody.collapse.show {
           flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #1B2838;
   background-clip: border-box;
   border: 1px solid #2a475e;
   border-radius: 1px;

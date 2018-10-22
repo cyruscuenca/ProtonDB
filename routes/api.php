@@ -15,7 +15,7 @@ use App\App;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user()->middleware('throttle:30');;
 });
 Route::post('app/search', function() {
     $q = Input::get('q');
@@ -27,5 +27,6 @@ Route::post('app/search', function() {
     }
     return view('frontend.app.search')->with('message', 'No apps found! Try searching by link');
 
-})->name('api.app.search');
-Route::post('app/check', 'Frontend\AppsController@check')->name('api.app.check');
+})->name('api.app.search')->middleware('throttle:120');
+Route::post('app/check', 'Frontend\AppsController@check')->name('api.app.check')->middleware('throttle:1000');
+Route::post('app/followup', 'Frontend\AppsController@followup')->name('api.app.followup')->middleware('throttle:1000');

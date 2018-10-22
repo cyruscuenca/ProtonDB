@@ -1,4 +1,4 @@
-<div style="position: fixed; z-index: 3; background: #c7d5e0; width: calc(100% - 300px - 25px); top: 0; height: 100px; border-bottom: 1px solid #2a475e;">
+<div style="z-index: 3; background: #c7d5e0; width: 100%; top: 100px; height: 100px; border-bottom: 1px solid #2a475e;">
 <section style="text-align: center; width: 100%; margin-top: 25px">
         {{ html()->text('link_input')
                         ->class('form-control')

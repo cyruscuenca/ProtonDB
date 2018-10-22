@@ -24,7 +24,7 @@ class HomeController extends Controller
             return count($app["entry"]);
         });
 
-        $sortedApps = $sorted->values()->take(10);
+        $sortedApps = $sorted->values()->take(5);
 
         $app_count = Cache::remember('apps', 5, function () {
             return App::all()->count();

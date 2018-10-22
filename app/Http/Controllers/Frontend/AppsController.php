@@ -6,57 +6,58 @@ use App\{Entry, App, Distro};
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use App\Jobs\CheckLink;
+use Queue;
+use Redis;
 
 class AppsController extends Controller
 {
     public function check(Request $request) 
     {
-        $url = $request->link;                
-        if(filter_var($url, FILTER_VALIDATE_URL) !== false && parse_url($url, PHP_URL_HOST) == "store.steampowered.com" && strlen($url) < 256) {
+        $url = $request->link;
+        $data = [];
+        if(filter_var($url, FILTER_VALIDATE_URL) == true && parse_url($url, PHP_URL_HOST) == "store.steampowered.com" && strlen($url) < 256) {
             $path = (explode('/', parse_url($url, PHP_URL_PATH)));
-            foreach ($path as &$frag) {
-                if (filter_var($frag, FILTER_VALIDATE_INT) !== false && App::where('path_int', '=', $frag)->first() == null) {
-                    $api_url = "https://store.steampowered.com/api/appdetails?appids=";
-                    $json = file_get_contents($api_url . $frag);
-                    $app_page = collect(json_decode($json,true));
-                    $data['name'] = $app_page[$frag]['data']['name'];
-                    $data['path_int'] = $frag;
-                    $data['path_slug'] = str_limit(str_slug($data['name']), 128);
-                    if(isset($app_page[$frag]['data']['short_description'])) {
-                        $data['description'] = $app_page[$frag]['data']['short_description'];
-                    }
-                    if(isset($app_page[$frag]['data']['pc_requirements']['minimum'])) {
-                        $data['pc_min_spec'] = $app_page[$frag]['data']['pc_requirements']['minimum'];
-                    }
-                    if(isset($app_page[$frag]['data']['pc_requirements']['recommended'])) {
-                        $data['pc_recom_spec'] = $app_page[$frag]['data']['pc_requirements']['recommended'];
-                    }
-                    if(isset($app_page[$frag]['data']['linux_requirements']['minimum'])) {
-                        $data['linux_min_spec'] = $app_page[$frag]['data']['linux_requirements']['minimum'];
-                    }
-                    if(isset($app_page[$frag]['data']['linux_requirements']['recommended'])) {
-                        $data['linux_recom_spec'] = $app_page[$frag]['data']['linux_requirements']['recommended'];
-                    }
-                    if($app_page[$frag]['data']['release_date']['coming_soon'] == false) {
-                        if(isset($app_page[$frag]['data']['release_date']['date'])) {
-                            $data['release_date'] = $app_page[$frag]['data']['release_date']['date'];
-                        }
-                    }
-                    else {
-                        $data['release_date'] = "Coming soon";
-                    }
-                    $app = App::create($data);
-                }                    
+            foreach ($path as $frag) {
+                if (filter_var($frag, FILTER_VALIDATE_INT) == true && App::where('path_int', '=', $frag)->first() == null) {
+                    dispatch(new CheckLink($frag));
+                    $data['response'] = "Dispatched";
+                    $data['steamid'] = $frag;
+                }
             }
+        } else {
+            $data['response'] = "Invalid request";
+            $data['steamid'] = "Invalid request";
         }
-        else {
-            $path = "Invalid link";
+        return response()->json([
+            'response' => $data['response'],
+            'steamid' => $data['steamid'],
+        ]);
+    }
+
+    public function followup(Request $request) 
+    {
+        $id = $request->id;
+        if (filter_var($id, FILTER_VALIDATE_INT) == true && App::where('path_int', '=', $id)->first() == null && strlen($id) < 28) {
+            $data = [];
+            $data['path_int'] = null;
+            $data['path_slug'] = "API cooldown";
         }
+        elseif(filter_var($id, FILTER_VALIDATE_INT) == true && App::where('path_int', '=', $id)->first() == true && strlen($id) < 28) {
+            $data = []; 
+            $data['path_int'] = $id;
+            $data['path_slug'] = App::where('path_int', $id)->pluck('path_slug');
+        }  else {
+            $path = "Invalid request";
+        }
+
         return response()->json([
             'path_int' => $data['path_int'],
             'path_slug' => $data['path_slug'],
         ]);
     }
+
     public function list()
     {
         $apps = App::latest()->paginate(14);   
@@ -64,20 +65,42 @@ class AppsController extends Controller
     }
     public function stats()
     {
+        $app_count = Cache::remember('apps', 5, function () {
+            return App::all()->count();
+        });
+
+        $entries_count = Cache::remember('entries', 5, function () {
+            return Entry::all()->count();
+        });
+
+        $flawless_count = Cache::remember('entries', 5, function () {
+            return Entry::where('compatibility_id', 1)->count();
+        });
+
+        $playable_count = Cache::remember('entries', 5, function () {
+            return Entry::where('compatibility_id', 2)->count();
+        });
+
+        $barely_playable_count = Cache::remember('entries', 5, function () {
+            return Entry::where('compatibility_id', 3)->count();
+        });       
+
+        $unplayable_count = Cache::remember('entries', 5, function () {
+            return Entry::where('compatibility_id', 4)->count();
+        });
+
         $apps = App::latest()->paginate(14);
-       	return view('frontend.app.list')->with('apps', $apps);
+
+        return view('frontend.app.stats', compact('apps'), compact('app_count', 'entries_count', 'flawless_count', 'playable_count', 'barely_playable_count', 'unplayable_count'));
     }
     public function best()
     {
         $apps = App::with(['entry' => function($query) {
             $query->whereIn('compatibility_id', [1,2]);
-        }])->get();
-    
-        $sorted= $apps->sortByDesc(function ($app, $key) {
-            return count($app["entry"]);
-        });
-    
-        $sortedApps = $sorted->values()->all();
+        }]);
+        $apps->withCount('entry'); // or withCount('entires') ? not sure how magic laravel's inflector is there
+        $apps->orderByDesc('entry_count'); // "_count" appended to relation afaik
+        $sortedApps = $apps->paginate(10);
         return view('frontend.app.best', compact('sortedApps'));
     }
     public function search()
@@ -121,24 +144,24 @@ class AppsController extends Controller
                         ->orderByRaw('COUNT(*) DESC')
                         ->limit(1)
                         ->get();
-        $bestDistro = Entry::where('app_id', $app->id)->select('distro_id')
+        $bestDistro = $entries->where('app_id', $app->id)->select('distro_id')
                         ->groupBy('distro_id')
                         ->orderByRaw('COUNT(*) DESC')
                         ->limit(1)
                         ->get();
-        $bestDistro = Distro::where('id', $bestDistro->first()->distro_id)->pluck('name');
+        $bestDistro = $entries->where('id', $bestDistro->first())->pluck('name');
 
+        $entries = Entry::where('app_id', $app->id);
         $colors = [
             'Flawless' => '#28b463',
             'Playable' => '#80a043',
             'Barely playable' => '#d4ac0d',
-            'Not Playable' => '#ba4a00',
+            'Not playable' => '#ba4a00',
             'Does not start' => '#c0392b',
         ];
-
         return view('frontend.app.show')
                 ->with('app', $app)
-                ->with('entries', $entries->latest()->paginate(4))
+                ->with('entries', $entries->latest()->paginate(3))
                 ->with('colors', $colors)
                 ->with('commonDistro', $commonDistro)
                 ->with('bestGPU', $bestGPU)

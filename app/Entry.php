@@ -20,6 +20,14 @@ class Entry extends Model
     {
         return $this->belongsTo(Distro::class);
     }
+    public function cpu()
+    {
+        return $this->belongsTo(Cpu::class);
+    }
+    public function gpu()
+    {
+        return $this->belongsTo(Gpu::class);
+    }
     public function user()
     {
         return $this->belongsTo(Models\Auth\User::class);

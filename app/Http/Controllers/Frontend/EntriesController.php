@@ -31,23 +31,48 @@ class EntriesController extends Controller
             'compatibility_id' => ['required'],
             'works' => ['required', 'min:25', 'max:350'],
             'broken' => ['required', 'min:25', 'max:350'],
-            'tweaks' => ['required', 'min:25', 'max:500'],
-            'works_after' => ['required', 'min:25', 'max:350'],
-            'broken_after' => ['required', 'min:25', 'max:350'],
         ];
+        if ($request->tweaks !== null) {
+            $rules = [
+                'distro_id' => ['required'],
+                'distro_version' => ['required'],
+                'cpu_id' => ['required'],
+                'gpu_id' => ['required'],
+                'app_id' => ['required'],
+                'driver_version' => ['required'],
+                'compatibility_id' => ['required'],
+                'works' => ['required', 'min:25', 'max:350'],
+                'broken' => ['required', 'min:25', 'max:350'],
+                'tweaks' => ['required', 'min:25', 'max:500'],
+                'works_after' => ['required', 'min:25', 'max:350'],
+                'broken_after' => ['required', 'min:25', 'max:350'],
+            ];
+        }
         $this->validate($request, $rules);
         $data = request()->all();
         $data['user_id'] = Auth::user()->id;
 
         $entry = Entry::create($data);
 
-        Session::flash('flash_message', 'Your entry has been submitted successfully!');
+        Session::flash('flash_message', 'Your report has been submitted successfully!');
         return back();
     }
-    public function show($slug)
+    public function show($path_int, $id)
     {
-        $entry = Entry::whereSlug($slug)->first();
-        return view('frontend.entry.show', compact('entry'));
+        $app = App::where('path_int', $path_int)->first();
+
+        $entries = Entry::where('id', $id);
+        $colors = [
+            'Flawless' => '#28b463',
+            'Playable' => '#80a043',
+            'Barely playable' => '#d4ac0d',
+            'Not playable' => '#ba4a00',
+            'Does not start' => '#c0392b',
+        ];
+        return view('frontend.entry.show')
+                ->with('app', $app)
+                ->with('entries', $entries->latest()->paginate(8))
+                ->with('colors', $colors);
     }
     public function list($path_int)
     {
@@ -57,10 +82,13 @@ class EntriesController extends Controller
             'Flawless' => '#28b463',
             'Playable' => '#80a043',
             'Barely playable' => '#d4ac0d',
-            'Not Playable' => '#ba4a00',
+            'Not playable' => '#ba4a00',
             'Does not start' => '#c0392b',
         ];
-        return view('frontend.entry.list')->with('app', $app)->with('entries', $entries)->with('colors', $colors);
+        return view('frontend.entry.list')
+                ->with('app', $app)
+                ->with('entries', $entries->latest()->paginate(8))
+                ->with('colors', $colors);
     }
     public function destroy($id)
     {

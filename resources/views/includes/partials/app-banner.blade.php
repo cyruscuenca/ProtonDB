@@ -1,26 +1,17 @@
-<style>
-.app-banner-menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background: red;
-}
-</style>
-<div style="overflow: hidden; height: 350px; border: 1px solid #2a475e; border-bottom: none;">
-    <div style="background: linear-gradient(rgba(27, 40, 56, 0.12), rgba(27, 40, 56, 0.60)), url(https://steamcdn-a.akamaihd.net/steam/apps/{{$app->path_int}}/header.jpg); background-size: cover; background-position: center; width: calc(100% + 10px); height: 360px; margin-top: -5px; margin-left: -5px; -webkit-filter: blur(3px); -moz-filter: blur(3px); -o-filter: blur(3px); -ms-filter: blur(3px); filter: blur(3px);">
+<div class="fullwidth">
+    <div style="background: linear-gradient(rgba(27, 40, 56, .5), rgba(27, 40, 56, .5)), url(https://steamcdn-a.akamaihd.net/steam/apps/{{$app->path_int}}/header.jpg); background-size: cover; background-position: center; width: calc(100% + 10px); height: 360px; margin-top: -5px; margin-left: -5px; -webkit-filter: blur(4px); -moz-filter: blur(4px); -o-filter: blur(4px); -ms-filter: blur(4px); filter: blur(4px);">
     </div>
 </div>
 <div style="width: 100%; height: 350px; position: absolute;">
-    <div style="margin: 25px;">
-        <div style="width: 350px; height: 300px; display: inline-block; background: rgba(42, 71, 94, .925); border-radius: 2px; float: right;">
-            <div style="margin: 20px;">
+        <div style="width: 350px; height: 300px; display: inline-block; background: rgba(42, 71, 94, 1); border-radius: 1px; float: right;">
+            <div style="margin: 25px;">
                     <h5 style="font-weight: bold; line-height: 150%; font-family: 'Oswald';">{{$app->name}}</h5>
                     <div style="line-height: 195%; font-size: 11pt; color: #96B0C5;">
                     @if (is_null($app->description))
                         No description
                     @endif
-                    {!!str_limit($app->description, 270)!!}
-                    </div> <a href="https://store.steampowered.com/app/{{$app->path_int}}" style="position: absolute; bottom: 45px; right: 50px; font-size: 11pt;">Store page</a>
+                    {!!str_limit($app->description, 200)!!}
+                    </div> <a href="https://store.steampowered.com/app/{{$app->path_int}}" style="position: absolute; bottom: 70px; right: 50px; font-size: 11pt;">Store page</a>
                 </div>
             </div>
         <div style="display: inline-block; float: left; width: 350px;">
@@ -28,13 +19,12 @@
             <p style="font-style: italic; font-weight: bold; display: block; margin-bottom: 8px; font-size: 11pt;" href="https://store.steampowered.com/app/{{$app->path_int}}">Release date: {{$app->release_date}}</p>
             <p style="font-style: italic; font-weight: bold; font-size: 11pt;" href="https://store.steampowered.com/app/{{$app->path_int}}">Updated {{$app->updated_at->diffForHumans()}}</p>
         </div>
-    </div>
 </div>
-<div style="width: 100%; height: 46px; border: 1px solid #2a475e; border-top: none;">
-        <ul class="app-banner-menu" style="margin: 0; padding: 0; font-size: 11pt; height: 100%; text-align: center;">
-            <li id="app-overview" style="display: inline-block; margin: 0 25px; color: #66c0f4; height: 100%;"><a style="line-height: 325%; color: #367097;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/{{$app->path_slug}}">Overview</a></li>
-            <li id="app-requirements" style="display: inline-block; margin: 0 25px; color: #66c0f4; height: 100%;"><a style="line-height: 325%; color: #367097;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/system-requirements">System requirements</a></li>
-            <li id="app-entries" style="display: inline-block; margin: 0 25px; color: #66c0f4; height: 100%;"><a style="line-height: 325%; color: #367097;" href="{{route('frontend.entry.list', $app->path_int )}}">Entries</a></li>
-            <li id="app-add-data" style="display: inline-block; margin: 0 25px; color: #66c0f4; height: 100%;"><a style="line-height: 325%; color: #367097;" href="{{route('frontend.entry.create', $app->path_int)}}">Add test data</a></li>
+<div class="fullwidth" style="height: 50px; background: #2a475e; top: 25px;">
+        <ul class="app-banner-menu" style="margin: 0; padding: 0; font-size: 13pt; height: 100%; text-align: center; font-family: 'Oswald';">
+            <li id="app-overview" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/{{$app->path_slug}}">Overview</a></li>
+            <li id="app-requirements" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/system-requirements">System requirements</a></li>
+            <li id="app-entries" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="{{route('frontend.entry.list', $app->path_int )}}">Entries</a></li>
+            <li id="app-add-data" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="{{route('frontend.entry.create', $app->path_int)}}">Add test data</a></li>
         </ul>
 </div>

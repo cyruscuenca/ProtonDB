@@ -32,13 +32,13 @@
             @include('includes.partials.logged-in-as')
             @include('frontend.includes.nav')
 
-            <div class="container">
+            <div class="responsive-width" style="margin-top: 175px;">
                 <div class="centered-container">
                     @include('includes.partials.messages')
                     @yield('content')
-                    @include('frontend.includes.footer')
                 </div>
             </div><!-- container -->
+            @include('frontend.includes.footer')
         </div><!-- #app -->
 
         <!-- Scripts -->
