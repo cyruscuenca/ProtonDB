@@ -28,7 +28,7 @@
 @section('title', app_name() . ' | ' . __('navs.general.home'))
 
 @section('content')
-    <div class="card" style="border: none; background: none;">
+    <div class="card" style="border: none; background: none;"> 
     @include('../../includes/partials/app-banner')
             <div style="margin-top: 25px;">
             <section style="width: 100%; min-height: 200px; background: #2a475e; border-radius: 1px;">
