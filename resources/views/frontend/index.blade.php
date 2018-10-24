@@ -41,9 +41,9 @@
 </style>
 
 @section('content')
-<div class="fullwidth" style="background-image: url({{asset('img/backend/brand/background.jpg')}}); height: 575px;">
+<div class="fullwidth" style="background-image: url({{asset('img/backend/brand/background.jpg')}}); height: 525px;">
     <div class="responsive-width" style="font-family: 'Oswald';">
-        <h1 style="font-weight: bold; font-size: 72px; margin-top: 205px;">ProtonDB</h1>
+        <h1 style="font-weight: bold; font-size: 72px; margin-top: 175px;">ProtonDB</h1>
         <p style="font-size: 24px;">The best proton games database on the web</p>
         <img style="width: 575px; margin-top: -225px; margin-right: -112px; float: right;" src="{{asset('img/backend/brand/penguin.svg')}}">
     </div>
@@ -85,8 +85,12 @@
 <section class="grid-container3">
     <div style="background: #2a475e; border-radius: 1px;">
         <div style="background: #2a475e; height: 50px; width: 100%;">
-            <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
-                <h4 style="font-weight: bold; margin-top: 10px;">About</h4>
+            <div style="background: #30516C; height: 50px; width: 100%; ">
+                <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
+                    <h6>About</h6>
+                </div>
+            </div>
+            <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 8px;">
                 <p style="line-height: 200%; margin-top: 18px;">ProtonDB.com is a database of compatibility reports and information for all games in the Steam store. Paste a link in the search bar to check if we have the game in our database. Discord and Battle.net link checking is coming soon™. Register to post a report. Statistics refresh every 5 minutes. The site is maintained by @cyrus_cuenca and is not affiliated with Valve Corp. iOS and Android apps are down the line. Powered by donations and advertisement revenue. Send questions to our twitter, or to: hello@cyruscuenca.com</p>
                 <p style="font-style: italic; display: inline-block;">October 18, 2018</p>
                 <p style="font-style: italic; display: inline-block; margin-left: 25px;">Posted by: Cyrus Cuenca</p>

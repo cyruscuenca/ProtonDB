@@ -4,6 +4,27 @@
         border-bottom: 3px solid #2a475e;
     }
 </style>
+<style>
+.pagination>li>a, .pagination>li>span { background: #2a475e; border-radius: 50% !important;margin: 0 5pt; border: 1pt solid #2a475e; height: 32pt; width: 32pt; color: #c7d5e0; font-size: 12pt;}
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+	background: #2a475e;
+	border: 1pt solid #2a475e;
+}
+.page-link {
+    background: #2a475e !important;
+    border: 1px solid #2a475e !important;
+    color: #c7d5e0 !important;
+    margin-top: 25px !important;
+}
+.nav-dashboard li:nth-child(3) {
+    border-bottom: 3px solid #66c0f4;
+}
+</style>
 @section('title', app_name() . ' | ' . __('navs.general.home'))
 
 @section('content')
@@ -11,7 +32,7 @@
     @include('../../includes/partials/app-banner')
             <div style="margin-top: 25px;">
             <section style="width: 100%; min-height: 200px; background: #2a475e; border-radius: 1px;">
-                <div style="background: #2a475e; height: 50px; width: 100%; margin-top: 25px;">
+                <div style="background: #30516C; height: 50px; width: 100%; margin-top: 25px;">
                     <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
                         <h6>Test Reports</h6>
                     </div>
@@ -34,6 +55,9 @@
                     @endforeach
                 </div>
             </section>
+            </div>
+            <div class="text-center pagination" style="width: 100%; margin-bottom: 15px; margin-top: -22px;">
+                {{ $entries->links() }}
             </div>
             <section style="width: 100%; background: #2a475e; height: 75px; border-radius: 1px;">
                 <div style="padding: 25px;">
