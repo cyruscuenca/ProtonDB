@@ -33,7 +33,7 @@
     <div class="grid-container" style="padding-top: 25px;">
         <div>
             <section style="width: 100%; min-height: 200px; background: #2a475e; margin-bottom: 25px; border-radius: 2px;">
-                <div style="background: #2a475e; height: 50px; width: 100%; margin-top: 25px;">
+                <div style="background: #30516C; height: 50px; width: 100%; margin-top: 25px;">
                     <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
                         <h6>Test Reports</h6>
                     </div>
@@ -57,12 +57,12 @@
                 </div>
             </section>
             <section style="width: 100%; background: #2a475e; border-radius: 2px;">
-                <div style="background: #2a475e; height: 50px; width: 100%;">
+                <div style="background: #30516C; height: 50px; width: 100%;">
                      <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
                         <h6>System Requirements</h6>
                     </div>
                 </div>
-                <div class="card" style="margin: 25px; border-radius: 2px; color: #c7d5e0; background: #2a475e; display: inline-block; list-style-type: none; padding: 0; width: 350px; line-height: 185%; font-size: 9.4pt;">
+                <div class="card" style="margin: 25px; border-radius: 2px; color: #c7d5e0; background: #30516C; display: inline-block; list-style-type: none; padding: 0; width: 350px; line-height: 185%; font-size: 9.4pt;">
                     <div style="margin: 26px; margin-bottom: 6px;">
                     @if (is_null($app->pc_min_spec))
                         No minimum specs are specefied
@@ -94,7 +94,7 @@
             </section>
         </div>
         <div style="margin-top: 25px;">
-            <div style="background: #2a475e; height: 50px; width: 100%;">
+            <div style="background: #30516C; height: 50px; width: 100%;">
                 <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
                     <h6>Overview</h6>
                 </div>
@@ -108,7 +108,7 @@
                     </div>
             </section>
             <section style="width: 100%; min-height: 250px; background: #2a475e; margin-top: 25px; border-radius: 2px;">
-                    <div style="background: #2a475e; height: 50px; width: 100%; margin-top: 25px;">
+                    <div style="background: #30516C; height: 50px; width: 100%; margin-top: 25px;">
                         <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
                             <h6>Best Componets</h6>
                         </div>

@@ -77,7 +77,7 @@ class EntriesController extends Controller
     public function list($path_int)
     {
         $app = App::where('path_int', $path_int)->first();
-        $entries = Entry::where('app_id', $app->id)->paginate(8);
+        $entries = Entry::where('app_id', $app->id);
         $colors = [
             'Flawless' => '#28b463',
             'Playable' => '#80a043',

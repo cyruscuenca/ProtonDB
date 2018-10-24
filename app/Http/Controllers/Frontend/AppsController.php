@@ -169,4 +169,11 @@ class AppsController extends Controller
                 ->with('bestDriver', $bestDriver)
                 ->with('bestDistro', $bestDistro);
     }
+    public function requirements($path_int)
+    {
+        $app = App::where('path_int', $path_int)->first();
+
+        return view('frontend.app.requirements')
+                ->with('app', $app);
+    }
 }

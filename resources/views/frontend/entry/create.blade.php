@@ -14,7 +14,7 @@
 <div class="card" style="margin-top: 100px; border: none; background: none;">
     @include('../../includes/partials/app-banner')
 <div style="width: 100%; background: #2a475e; margin-top: 50px">
-    <div style="background: #2a475e; height: 25px; width: 100%; margin-top: 25px;">
+    <div style="background: #30516C; height: 25px; width: 100%; margin-top: 25px;">
         <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); margin-top: -8px;">
             <h6>Create a Test Report</h6>
         </div>

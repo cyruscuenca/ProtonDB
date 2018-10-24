@@ -11,7 +11,7 @@
     @include('../../includes/partials/app-banner')
             <div style="margin-top: 25px;">
             <section style="width: 100%; min-height: 200px; background: #2a475e; border-radius: 1px;">
-                <div style="background: #2a475e; height: 50px; width: 100%; margin-top: 25px;">
+                <div style="background: #30516C; height: 50px; width: 100%; margin-top: 25px;">
                     <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px); padding-top: 16px;">
                         <h6>Full Report</h6>
                     </div>

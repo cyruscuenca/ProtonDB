@@ -23,7 +23,7 @@
 <div class="fullwidth" style="height: 50px; background: #2a475e; top: 25px;">
         <ul class="app-banner-menu" style="margin: 0; padding: 0; font-size: 13pt; height: 100%; text-align: center; font-family: 'Oswald';">
             <li id="app-overview" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/{{$app->path_slug}}">Overview</a></li>
-            <li id="app-requirements" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/system-requirements">System requirements</a></li>
+            <li id="app-requirements" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/meta/system-requirements">System requirements</a></li>
             <li id="app-entries" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="{{route('frontend.entry.list', $app->path_int )}}">Entries</a></li>
             <li id="app-add-data" style="display: inline-block; margin: 0 25px; height: 100%;"><a style="line-height: 285%; color: #c7d5e0;" href="{{route('frontend.entry.create', $app->path_int)}}">Add test data</a></li>
         </ul>
