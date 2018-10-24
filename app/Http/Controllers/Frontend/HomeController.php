@@ -35,7 +35,7 @@ class HomeController extends Controller
         });
 
         $flawless_count = Cache::remember('entries', 5, function () {
-            return Entry::where('distro_id', [1,2])->count();
+            return Entry::where('compatibility_id', 1)->count();
         });
 
         return view('frontend.index', compact('sortedApps'), compact('app_count', 'entries_count', 'flawless_count'));

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Frontend\Auth\UserProviderRegistered;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-
+use Intervention\Image\ImageManagerStatic as Image;
 /**
  * Class UserRepository.
  */
@@ -146,7 +146,17 @@ class UserRepository extends BaseRepository
 
         // Upload profile image if necessary
         if ($image) {
-            $user->avatar_location = $image->store('/avatars', 'public');
+            // If there is a current image, delete the old one
+            if (strlen(auth()->user()->avatar_location)) {
+                Storage::disk('public')->delete(auth()->user()->avatar_location);
+            }
+            $photo = Image::make($image)
+            ->resize(300, 300 )
+            ->encode('jpg',80);
+            $now = Carbon::now()->toDateTimeString();
+            $hash = md5($photo->__toString().$now);
+            Storage::put('/public/avatars/'.$hash.'.jpg', $photo);
+            $user->avatar_location = 'avatars/'.$hash.'.jpg';
         } else {
             // No image being passed
             if ($input['avatar_type'] == 'storage') {

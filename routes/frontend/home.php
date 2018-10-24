@@ -20,9 +20,10 @@ Route::post('contact/send', [ContactController::class, 'send'])->name('contact.s
 Route::get('app/list', 'AppsController@list')->name('app.list');
 Route::get('app/stats', 'AppsController@stats')->name('app.stats');
 Route::get('app/{path_int}/{path_slug}', 'AppsController@show')->name('app.show');
+Route::get('app/{path_int}/meta/system-requirements', 'AppsController@requirements')->name('app.requirements');
+Route::post('app/{path_int}/entry/store', 'EntriesController@store')->name('entry.store');
 Route::get('app/{path_int}/entry/create', 'EntriesController@create')->name('entry.create');
 Route::post('app/{path_int}/entry/store', 'EntriesController@store')->name('entry.store');
-Route::get('app/{path_int}/entry/{id}', 'EntriesController@show')->name('entry.show');
 Route::get('app/{path_int}/entry/list', 'EntriesController@list')->name('entry.list');
 Route::get('app/{path_int}/entry/{id}', 'EntriesController@show')->name('entry.show');
 Route::get('app/search', 'AppsController@search')->name('app.search');

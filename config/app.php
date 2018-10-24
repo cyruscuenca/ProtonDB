@@ -158,11 +158,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
-        /*
-         * Package Service Providers that aren't auto-discover...
-         */
-
+        // Intervention image processing
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -232,7 +229,7 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
