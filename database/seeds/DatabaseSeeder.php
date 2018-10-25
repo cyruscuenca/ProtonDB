@@ -22,9 +22,8 @@ class DatabaseSeeder extends Seeder
             'sessions',
         ]);
 
-        //$this->call(AuthTableSeeder::class);
-        //$this->call(CompatibilityLevelsTableSeeder::class);
-        $this->call(OperatingSystemsTableSeeder::class);
+        $this->call(AuthTableSeeder::class);
+        $this->call(CompatibilityLevelsTableSeeder::class);
         $this->call(DistrosTableSeeder::class);
         $this->call(DriversTableSeeder::class);
         $this->call(CpusTableSeeder::class);
