@@ -16,15 +16,15 @@ class CreateAppsTable extends Migration
         Schema::create('apps', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->longText('description');
-            $table->string('path_folder');
+            $table->longText('description')->nullable();
+            $table->string('path_folder')->nullable();
             $table->integer('path_int');
             $table->string('path_slug');
-            $table->longText('pc_min_spec');
-            $table->longText('pc_recom_spec');
-            $table->longText('linux_min_spec');
-            $table->longText('linux_recom_spec');
-            $table->string('release_date');
+            $table->longText('pc_min_spec')->nullable();
+            $table->longText('pc_recom_spec')->nullable();
+            $table->longText('linux_min_spec')->nullable();
+            $table->longText('linux_recom_spec')->nullable();
+            $table->string('release_date')->nullable();
             $table->timestamps();
         });
     }
