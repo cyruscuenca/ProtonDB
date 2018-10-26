@@ -29,7 +29,7 @@
                 {{ Form::label("Distro&nbsp;", null) }}
                 {!! Form::select("distro_id", $distros, null, ['placeholder' => '&nbsp;&nbsp;Specify your distro&nbsp;&nbsp;', 'style' => 'display: inline-block; color: #C7D5E0; border: none; height: 30px; border-radius: 1px;']) !!}
                 </div>
-                {!! Form::text("distro_version", null, ['placeholder' => 'Version', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; height: 50px; background: #30516C;']) !!}
+                {!! Form::text("distro_version", null, ['placeholder' => 'Version', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; background: #30516C;']) !!}
             </div>
             <div style="width: 100%; margin-bottom: 18px;">
                 <div style="margin-bottom: 18px;">
@@ -42,7 +42,7 @@
                 {!! Form::select("gpu_id", $gpus, null, ['placeholder' => '&nbsp;&nbsp;Specify your GPU&nbsp;&nbsp;', 'style' => 'color: #C7D5E0; border: none; height: 30px; border-radius: 1px;']) !!}
                 </div>
                 <div style="display: inline-block; margin-right: 15px;">
-                {!! Form::text("driver_version", null, ['placeholder' => 'Driver', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; height: 50px; background: #30516C;']) !!}
+                {!! Form::text("driver_version", null, ['placeholder' => 'Driver', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; background: #30516C;']) !!}
                 </div>
                 </div>
             </div>
