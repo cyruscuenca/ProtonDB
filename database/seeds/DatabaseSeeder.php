@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(AuthTableSeeder::class);
-        $this->call(CompatibilityLevelsTableSeeder::class);
+        $this->call(CompatibilitiesTableSeeder::class);
         $this->call(DistrosTableSeeder::class);
         $this->call(DriversTableSeeder::class);
         $this->call(CpusTableSeeder::class);
