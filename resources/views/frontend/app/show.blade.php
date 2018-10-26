@@ -50,7 +50,7 @@
                             <p style="display: inline-block; font-size: 11pt; color: #c7d5e0;">{{$entry->updated_at->diffForHumans()}}</p>
                             <p style="font-size: 11pt; line-height: 175%; color: #c7d5e0;"><span style="font-weight: bold;">Works: </span>{{$entry->works}}</p>
                             <p style="font-size: 11pt; line-height: 175%; color: #c7d5e0;"><span style="font-weight: bold;">Broken: </span>{{$entry->works}}</p>
-                            <a href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/entry/{{$entry->id}}" style="font-size: 10pt; font-weight: bold; color: #c7d5e0;">TWEAKS</a>
+                            <a href="http://104.248.185.46/app/{{$app->path_int}}/entry/{{$entry->id}}" style="font-size: 10pt; font-weight: bold; color: #c7d5e0;">TWEAKS</a>
                         </div>
                     </article>
                     @endforeach

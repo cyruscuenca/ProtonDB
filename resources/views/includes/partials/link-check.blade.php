@@ -50,7 +50,7 @@ $.ajaxSetup({
 <script type="text/javascript">
 function check(link) {
 	console.log(link + ' request sent');
-	var url = "http://www.steamplay-wiki.local:8000/api/app/check";
+	var url = "http://104.248.185.46/api/app/check";
 	$.ajax({
 		type: "POST",
         contentType: "application/json",
@@ -63,7 +63,7 @@ function check(link) {
 	})
 	.done(function(data) {
 		console.log(data.path + ' response recieved');
-		window.location = 'http://www.steamplay-wiki.local:8000/app/' + data.path_int + '/' + data.path_slug;
+		window.location = 'http://104.248.185.46/app/' + data.path_int + '/' + data.path_slug;
 	})
 }
 </script>

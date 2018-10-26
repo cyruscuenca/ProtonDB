@@ -106,7 +106,7 @@
     </div>
 </section>
     @foreach($sortedApps as $app)
-        <a href="http://www.steamplay-wiki.local:8000/app/{{$app->path_int}}/{{$app->path_slug}}">
+        <a href="http://104.248.185.46/app/{{$app->path_int}}/{{$app->path_slug}}">
             <div style="overflow: hidden; border-radius: 1px; margin-top: 25px;">
                 <div style="width: 100%; height: 92px;">
                 </div>
