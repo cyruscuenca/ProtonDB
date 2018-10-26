@@ -15,13 +15,14 @@ class CreateEntriesTable extends Migration
     {
         Schema::create('entries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('game_id');
+            $table->integer('app_id');
             $table->integer('compatibility_id');
             $table->string('user_id');
             $table->integer('gpu_id');
             $table->integer('cpu_id');
-            $table->integer('driver_id');
-            $table->integer('os_id');
+            $table->text('driver_version');
+            $table->integer('distro_id');
+            $table->text('distro_version');
             $table->text('works');
             $table->text('broken');
             $table->timestamps();

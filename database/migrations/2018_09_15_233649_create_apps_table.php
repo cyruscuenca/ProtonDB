@@ -20,6 +20,10 @@ class CreateAppsTable extends Migration
             $table->string('path_folder');
             $table->integer('path_int');
             $table->string('path_slug');
+            $table->longText('pc_min_spec');
+            $table->longText('pc_recom_spec');
+            $table->longText('linux_min_spec');
+            $table->longText('linux_recom_spec');
             $table->timestamps();
         });
     }
