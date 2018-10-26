@@ -48,8 +48,7 @@ Route::group(['middleware' => ['auth', 'password_expires']], function () {
          * User Profile Specific
          */
         Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
-        Route::get('app/{path_int}/entry/create', 'EntriesController@create')->name('entry.create');
-        Route::post('app/{path_int}/entry/store', 'EntriesController@store')->name('entry.store');
     });
+    Route::get('app/{path_int}/entry/create', 'EntriesController@create')->name('entry.create');
+    Route::post('app/{path_int}/entry/store', 'EntriesController@store')->name('entry.store');
 });
