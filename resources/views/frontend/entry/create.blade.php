@@ -16,7 +16,7 @@
 <div style="width: 100%; background: #2a475e; margin-top: 50px">
     <div style="background: #30516C; height: 50px; width: 100%;">
         <div style="margin-left: 25px; margin-right: 25px; width: calc(100% - 50px);">
-            <h6 style="padding-top: 18px;">Create a Test Report</h6>
+            <h6 style="padding-top: 16px;">Create a Test Report</h6>
         </div>
     </div>
     <div style="min-height: 400px; color: #C7D5E0;">
