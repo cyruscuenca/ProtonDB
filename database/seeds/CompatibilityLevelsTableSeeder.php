@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\CompatibilityLevel;
+use App\Compatibility;
 
-class CompatibilityLevelsTableSeeder extends Seeder
+class CompatibilitiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,19 +12,19 @@ class CompatibilityLevelsTableSeeder extends Seeder
      */
     public function run()
     {
-        CompatibilityLevel::create([
+        Compatibility::create([
             'name'        => 'Flawless',
         ]);
-        CompatibilityLevel::create([
+        Compatibility::create([
             'name'        => 'Playable',
         ]);
-        CompatibilityLevel::create([
+        Compatibility::create([
             'name'        => 'Barely playable',
         ]);
-        CompatibilityLevel::create([
+        Compatibility::create([
             'name'        => 'Not playable',
         ]);
-        CompatibilityLevel::create([
+        Compatibility::create([
             'name'        => 'Does not start',
         ]);
     }
