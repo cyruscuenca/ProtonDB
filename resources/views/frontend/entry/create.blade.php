@@ -68,7 +68,7 @@
 				</div>
                 <div style="width: calc(50% - 12.5px); display: inline-block; float: left;">
                 {{ Form::label("What works now?", null) }}
-                {!! Form::textarea("works_after", null, ['class' => 'form-control', 'style' => 'border-radius: 1px; color: #C7D5E0; height: 50px; background: #30516C;]) !!}
+                {!! Form::textarea("works_after", null, ['class' => 'form-control', 'style' => 'border-radius: 1px; color: #C7D5E0; height: 50px; background: #30516C;']) !!}
                 </div>
                 <div style="width: calc(50% - 12.5px); display: inline-block; float: right;">
                 {{ Form::label("What's broken now?", null) }}
