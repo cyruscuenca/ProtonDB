@@ -16,7 +16,7 @@ class CreateAppsTable extends Migration
         Schema::create('apps', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('path_folder');
             $table->integer('path_int');
             $table->string('path_slug');
