@@ -16,6 +16,7 @@ class CreateCpusTable extends Migration
         Schema::create('cpus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('brand_id');
             $table->timestamps();
         });
     }
