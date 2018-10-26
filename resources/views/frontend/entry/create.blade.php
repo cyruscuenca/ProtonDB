@@ -20,7 +20,7 @@
         </div>
     </div>
     <div style="min-height: 400px; color: #C7D5E0;">
-        {!! Form::open(['route' => ['frontend.entry.store', $app->path_int) !!}
+        {!! Form::open(['route' => ['frontend.entry.store', $app->path_int]) !!}
         <div style="width: 100%;">
             <div style="margin: 25px;">
             {{ Form::hidden('app_id', $app->id) }}
