@@ -16,6 +16,7 @@ class CreateGpusTable extends Migration
         Schema::create('gpus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('brand_id');
             $table->timestamps();
         });
     }
