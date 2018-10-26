@@ -24,10 +24,11 @@ class AppsController extends Controller
                     dispatch(new CheckLink($frag));
                     $data['response'] = "Dispatched";
                     $data['steamid'] = $frag;
-                } else {
+                }
+                if (filter_var($frag, FILTER_VALIDATE_INT) == true && App::where('path_int', '=', $frag)->first() !== null) {
                     $data['response'] = "Dispatched";
                     $data['steamid'] = $frag;
-                }
+                } 
             }
         } else {
             $data['response'] = "Invalid request";
