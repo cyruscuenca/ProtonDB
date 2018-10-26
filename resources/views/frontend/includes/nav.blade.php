@@ -70,7 +70,7 @@ function sleep(ms) {
 
 async function check(link) {
 	console.log(link + ' check started');
-	var url = "http://www.steamplay-wiki.local:8000/api/app/check";
+	var url = "http://104.248.185.46/api/app/check";
 	$.ajax({
 		type: "POST",
         contentType: "application/json",
@@ -93,7 +93,7 @@ async function check(link) {
 }
 async function followup(id) {
 	console.log(id + ' followup started');
-	var url = "http://www.steamplay-wiki.local:8000/api/app/followup";
+	var url = "http://104.248.185.46/api/app/followup";
     var timeout = 8;
     var interval = 1;
         for (var i = 0; i < timeout; i++) {
@@ -111,10 +111,10 @@ async function followup(id) {
         .done(function(data) {
             if(data.path_slug != "API cooldown" && data.path_slug != null) {
                 console.log(data.path + 'app processed');
-                window.location = 'http://www.steamplay-wiki.local:8000/app/' + data.path_int + '/' + data.path_slug;
+                window.location = 'http://104.248.185.46/app/' + data.path_int + '/' + data.path_slug;
             } else if(data.path_slug == "API cooldown" && data.path_slug == null) {
                 console.log(data.path + 'API cooling down');
-                window.location = 'http://www.steamplay-wiki.local:8000/stats';
+                window.location = 'http://104.248.185.46/stats';
             } else {
                 console.log(data.id + 'Invalid response');
             }
