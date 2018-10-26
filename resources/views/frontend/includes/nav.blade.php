@@ -82,12 +82,12 @@ async function check(link) {
 		processData: false,
 	})
 	.done(function(data) {
-		console.log(data.link + ' check recieved');
+		console.log(data.steamid + ' check recieved');
         if(data.response == "Dispatched") {
-		    console.log(data.link + 'Dispatched');
+		    console.log(data.steamid + 'Dispatched');
             followup(data.steamid);
         } else {
-		console.log(data.link + ' error');
+		console.log(data.response + ' error');
         }
 	})
 }
