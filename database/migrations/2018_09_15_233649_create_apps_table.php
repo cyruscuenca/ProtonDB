@@ -24,6 +24,7 @@ class CreateAppsTable extends Migration
             $table->longText('pc_recom_spec');
             $table->longText('linux_min_spec');
             $table->longText('linux_recom_spec');
+            $table->string('release_date');
             $table->timestamps();
         });
     }
