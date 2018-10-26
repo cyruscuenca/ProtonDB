@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompatibilityLevelsTable extends Migration
+class CreateCompatibilitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCompatibilityLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('compatibility_levels', function (Blueprint $table) {
+        Schema::create('compatibilities', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');            
         });
@@ -26,6 +26,6 @@ class CreateCompatibilityLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compatibility_levels');
+        Schema::dropIfExists('compatibilities');
     }
 }
