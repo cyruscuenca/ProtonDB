@@ -24,6 +24,9 @@ class AppsController extends Controller
                     dispatch(new CheckLink($frag));
                     $data['response'] = "Dispatched";
                     $data['steamid'] = $frag;
+                } else {
+                    $data['response'] = "Dispatched";
+                    $data['steamid'] = $frag;
                 }
             }
         } else {
