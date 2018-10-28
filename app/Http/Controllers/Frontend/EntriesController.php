@@ -33,7 +33,7 @@ class EntriesController extends Controller
             'compatibility_id' => ['required'],
             'works' => ['required', 'min:25', 'max:350'],
             'broken' => ['required', 'min:25', 'max:350'],
-            'notes' => ['required', 'min:25', 'max:350'],
+            'notes' => ['min:25', 'max:350'],
         ];
         if ($request->tweaks !== null) {
             $rules = [
@@ -50,7 +50,7 @@ class EntriesController extends Controller
                 'broken' => ['required', 'min:25', 'max:350'],
                 'tweaks' => ['required', 'min:25', 'max:500'],
                 'works_after' => ['required', 'min:25', 'max:350'],
-                'notes' => ['required', 'min:25', 'max:350'],
+                'notes' => ['min:25', 'max:350'],
             ];
         }
         $this->validate($request, $rules);
