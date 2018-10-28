@@ -12,7 +12,7 @@ class EntriesController extends Controller
     public function create($path_int)
     {
         $distros = Distro::all()->pluck('name');
-        $cpu_brands = ["Intel", "AMD"];
+        $gpu_brands = ["Intel", "AMD"];
         $cpu_brands = ["NVIDIA", "AMD"];
         $compatibilities = Compatibility::all()->pluck('name');
         $app = App::where('path_int', $path_int)->first();
