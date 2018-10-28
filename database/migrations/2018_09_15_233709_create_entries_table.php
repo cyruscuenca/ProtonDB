@@ -18,8 +18,10 @@ class CreateEntriesTable extends Migration
             $table->integer('app_id');
             $table->integer('compatibility_id');
             $table->string('user_id');
-            $table->integer('gpu_id');
-            $table->integer('cpu_id');
+            $table->text('gpu_brand_id');
+            $table->text('gpu');
+            $table->text('cpu_brand_id');
+            $table->text('cpu');
             $table->text('driver_version');
             $table->integer('distro_id');
             $table->text('distro_version');

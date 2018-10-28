@@ -35,11 +35,13 @@
                 <div style="margin-bottom: 18px;">
                 <div style="margin-right: 15px; display: inline-block;">
                 {{ Form::label("CPU&nbsp;", null) }}
-                {!! Form::select("cpu_id", $cpus, null, ['placeholder' => '&nbsp;&nbsp;Specify your CPU&nbsp;&nbsp;', 'style' => 'color: #C7D5E0; border: none; height: 30px; border-radius: 1px;']) !!}
+                {!! Form::select("cpu_brand_id", $cpu_brands, null, ['placeholder' => '&nbsp;&nbsp;CPU brand&nbsp;&nbsp;', 'style' => 'display: inline-block; color: #C7D5E0; border: none; height: 30px; border-radius: 1px;']) !!}
+                {!! Form::text("cpu", null, ['placeholder' => 'CPU', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; background: #30516C;  border: none;']) !!}
                 </div>
                 <div style="display: inline-block; margin-right: 15px;">
                 {{ Form::label("GPU&nbsp;", null) }}
-                {!! Form::select("gpu_id", $gpus, null, ['placeholder' => '&nbsp;&nbsp;Specify your GPU&nbsp;&nbsp;', 'style' => 'color: #C7D5E0; border: none; height: 30px; border-radius: 1px;']) !!}
+                {!! Form::select("gpu_brand_id", $gpu_brands, null, ['placeholder' => '&nbsp;&nbsp;GPU brand&nbsp;&nbsp;', 'style' => 'display: inline-block; color: #C7D5E0; border: none; height: 30px; border-radius: 1px;']) !!}
+                {!! Form::text("gpu", null, ['placeholder' => 'GPU', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; background: #30516C;  border: none;']) !!}
                 </div>
                 <div style="display: inline-block; margin-right: 15px;">
                 {!! Form::text("driver_version", null, ['placeholder' => 'Driver', 'class' => 'form-control', 'style' => 'width: 115px; display: inline-block; border-radius: 1px; color: #C7D5E0; background: #30516C;  border: none;']) !!}

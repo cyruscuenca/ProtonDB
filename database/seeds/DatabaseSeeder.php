@@ -25,8 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AuthTableSeeder::class);
         $this->call(CompatibilitiesTableSeeder::class);
         $this->call(DistrosTableSeeder::class);
-        $this->call(CpusTableSeeder::class);
-        $this->call(GpusTableSeeder::class);
+        $this->call(BrandsTableSeeder::class);
 
         Model::reguard();
     }

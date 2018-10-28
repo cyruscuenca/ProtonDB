@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\{Entry, App, Distro, Cpu, Gpu, Compatibility};
+use App\{Entry, App, Distro, Compatibility, Brand};
 use Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,11 +12,11 @@ class EntriesController extends Controller
     public function create($path_int)
     {
         $distros = Distro::all()->pluck('name');
-        $cpus = Cpu::all()->pluck('name');
-        $gpus = Gpu::all()->pluck('name');
+        $cpu_brands = Brand::where('name', ["AMD", "Intel"])->pluck('name');
+        $gpu_brands = Brand::where('name', ["AMD", "NVIDIA"])->pluck('name');
         $compatibilities = Compatibility::all()->pluck('name');
         $app = App::where('path_int', $path_int)->first();
-       	return view('frontend.entry.create', compact('distros', 'cpus', 'gpus', 'compatibilities'))->with('app', $app);
+       	return view('frontend.entry.create', compact('distros', 'cpu_brands', 'gpu_brands', 'compatibilities'))->with('app', $app);
     }
 
     public function store(Request $request)
@@ -24,8 +24,10 @@ class EntriesController extends Controller
         $rules = [
             'distro_id' => ['required'],
             'distro_version' => ['required'],
-            'cpu_id' => ['required'],
-            'gpu_id' => ['required'],
+            'cpu_brand_id' => ['required'],
+            'cpu' => ['required'],
+            'gpu_brand_id' => ['required'],
+            'gpu' => ['required'],
             'app_id' => ['required'],
             'driver_version' => ['required'],
             'compatibility_id' => ['required'],
@@ -36,8 +38,10 @@ class EntriesController extends Controller
             $rules = [
                 'distro_id' => ['required'],
                 'distro_version' => ['required'],
-                'cpu_id' => ['required'],
-                'gpu_id' => ['required'],
+                'cpu_brand_id' => ['required'],
+                'cpu' => ['required'],
+                'gpu_brand_id' => ['required'],
+                'gpu' => ['required'],
                 'app_id' => ['required'],
                 'driver_version' => ['required'],
                 'compatibility_id' => ['required'],

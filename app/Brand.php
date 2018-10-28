@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cpu extends Model
+class Brand extends Model
 {
     public function entry()
     {
