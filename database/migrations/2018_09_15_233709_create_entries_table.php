@@ -27,10 +27,10 @@ class CreateEntriesTable extends Migration
             $table->text('distro_version');
             $table->longtext('works');
             $table->longtext('broken');
-            $table->longtext('tweaks');
-            $table->longtext('works_after');
-            $table->longtext('broken_after');
-            $table->longtext('notes');
+            $table->longtext('tweaks')->nullable();
+            $table->longtext('works_after')->nullable();
+            $table->longtext('broken_after')->nullable();
+            $table->longtext('notes')->nullable();
             $table->timestamps();
         });
     }
