@@ -133,13 +133,13 @@ class AppsController extends Controller
                         ->get();
         
         // Get best specs
-        $bestGPU = Entry::where('app_id', $app->id)->select('gpu_id')
-                        ->groupBy('gpu_id')
+        $bestGPU = Entry::where('app_id', $app->id)->select('gpu')
+                        ->groupBy('gpu')
                         ->orderByRaw('COUNT(*) DESC')
                         ->limit(1)
                         ->get();
-        $bestCPU = Entry::where('app_id', $app->id)->select('cpu_id')
-                        ->groupBy('cpu_id')
+        $bestCPU = Entry::where('app_id', $app->id)->select('cpu')
+                        ->groupBy('cpu')
                         ->orderByRaw('COUNT(*) DESC')
                         ->limit(1)
                         ->get();
