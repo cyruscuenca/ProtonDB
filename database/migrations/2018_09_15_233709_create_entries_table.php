@@ -25,8 +25,12 @@ class CreateEntriesTable extends Migration
             $table->text('driver_version');
             $table->integer('distro_id');
             $table->text('distro_version');
-            $table->text('works');
-            $table->text('broken');
+            $table->longtext('works');
+            $table->longtext('broken');
+            $table->longtext('tweaks');
+            $table->longtext('works_after');
+            $table->longtext('broken_after');
+            $table->longtext('notes');
             $table->timestamps();
         });
     }
