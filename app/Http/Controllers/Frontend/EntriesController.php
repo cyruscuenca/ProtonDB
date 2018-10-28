@@ -12,8 +12,8 @@ class EntriesController extends Controller
     public function create($path_int)
     {
         $distros = Distro::all()->pluck('name');
-        $cpu_brands = ["Intel", "AMD"];
-        $gpu_brands = ["NVIDIA", "AMD"];
+        $cpu_brands = Brand::where('name', "AMD")->orWhere('name', "Intel")->pluck('name');
+        $gpu_brands = Brand::where('name', "AMD")->orWhere('name', "NVIDIA")->pluck('name');
         $compatibilities = Compatibility::all()->pluck('name');
         $app = App::where('path_int', $path_int)->first();
        	return view('frontend.entry.create', compact('distros', 'cpu_brands', 'gpu_brands', 'compatibilities'))->with('app', $app);
