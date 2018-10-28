@@ -33,7 +33,7 @@ class EntriesController extends Controller
             'compatibility_id' => ['required'],
             'works' => ['required', 'min:25', 'max:350'],
             'broken' => ['required', 'min:25', 'max:350'],
-            'notes' => ['min:25', 'max:350'],
+            'notes' => ['max:350'],
         ];
         if ($request->tweaks !== null) {
             $rules = [
