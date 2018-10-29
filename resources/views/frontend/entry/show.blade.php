@@ -27,7 +27,7 @@
                             </p>
                             <p style="display: inline-block; font-size: 11pt; color: #c7d5e0;">{{$entry->updated_at->diffForHumans()}}</p>
                             <p style="font-size: 11pt; line-height: 175%; color: #c7d5e0;"><span style="font-weight: bold;">Works: </span>{{$entry->works}}</p>
-                            <p style="font-size: 11pt; line-height: 175%; color: #c7d5e0;"><span style="font-weight: bold;">Broken: </span>{{$entry->works}}</p>
+                            <p style="font-size: 11pt; line-height: 175%; color: #c7d5e0;"><span style="font-weight: bold;">Broken: </span>{{$entry->broken}}</p>
                             <p style="font-size: 11pt; line-height: 175%; color: #c7d5e0;"><span style="font-weight: bold;">Tweaks: </span>{{$entry->tweaks}}</p>
                             <p style="font-size: 11pt; line-height: 175%; color: #66c0f4;"><span style="font-weight: bold;">Works After: </span>{{$entry->works_after}}</p>
                             <p style="font-size: 11pt; line-height: 175%; color: #66c0f4;"><span style="font-weight: bold;">Broken After: </span>{{$entry->broken_after}}</p>
