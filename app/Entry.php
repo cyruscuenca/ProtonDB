@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entry extends Model
 {
-    protected $fillable = ['app_id', 'compatibility_id', 'user_id', 'cpu', 'gpu', 'gpu_brand_id', 'cpu_brand_id', 'distro_id', 'distro_version', 'driver_version', 'works', 'broken', 'tweaks', 'works_after', 'broken_after'];
+    protected $fillable = ['app_id', 'compatibility_id', 'user_id', 'gpu', 'gpu_brand_id', 'cpu', 'cpu_brand_id', 'distro_id', 'distro_version', 'driver_version', 'works', 'broken', 'tweaks', 'works_after', 'broken_after'];
 
     public function app()
     {

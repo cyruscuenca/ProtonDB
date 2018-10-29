@@ -36,8 +36,8 @@
                                 <img style="display: inline-block; height: 200px; margin-top: -142px; margin-right: 25px; border-radius: 1px;" src="{{asset('img/backend/specs.jpg')}}">
                                 <div style="display: inline-block;">
                                     <h6>Tested on this system:</h6>
-                                    <p style="font-size: 11pt; line-height: 175%; margin-top: 15px;"><span style="font-weight: bold;">CPU: </span>{{$entry->cpu['name']}}</p>
-                                    <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">GPU: </span>{{$entry->gpu['name']}}</p>
+                                    <p style="font-size: 11pt; line-height: 175%; margin-top: 15px;"><span style="font-weight: bold;">CPU: </span>{{$entry['cpu']}}</p>
+                                    <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">GPU: </span>{{$entry['gpu']}}</p>
                                     <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">Driver: </span>{{$entry->driver_version}}</p>
                                     <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">Distro: </span>{{$entry->distro['name']}}</p>
                                 </div>
