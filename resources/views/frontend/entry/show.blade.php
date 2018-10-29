@@ -39,7 +39,7 @@
                                     <p style="font-size: 11pt; line-height: 175%; margin-top: 15px;"><span style="font-weight: bold;">CPU: </span>{{$entry['cpu']}}</p>
                                     <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">GPU: </span>{{$entry['gpu']}}</p>
                                     <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">Driver: </span>{{$entry->driver_version}}</p>
-                                    <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">Distro: </span>{{$entry->distro['name']}}</p>
+                                    <p style="font-size: 11pt; line-height: 175%;"><span style="font-weight: bold;">Distro: </span>{{$entry->distro}}</p>
                                 </div>
                             </div>
                             </div>
